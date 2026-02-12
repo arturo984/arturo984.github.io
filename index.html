@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poco Studio — Design Consultancy</title>
+<meta name="description" content="Poco is a design consultancy that helps businesses design and build the digital products and experiences they haven't had the resources to get to yet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #C4233F;
+    --crimson-dark: #A01D34;
+    --black: #0A0A0A;
+    --off-white: #F6F4F1;
+    --warm-gray: #E8E4DF;
+    --mid-gray: #706B66;
+    --dark-gray: #2A2826;
+    --case-label: #B5B0AB;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--black);
+    background: var(--off-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--crimson);
+    color: white;
+  }
+
+  /* ======================== */
+  /* NAV                      */
+  /* ======================== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(246, 244, 241, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    color: var(--crimson);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .nav-logo:hover {
+    color: var(--crimson-dark);
+  }
+
+  .nav-logo svg {
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--crimson);
+  }
+
+  .nav-cta {
+    background: var(--crimson) !important;
+    color: white !important;
+    padding: 0.6rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--crimson-dark) !important;
+    transform: translateY(-1px);
+  }
+
+  /* ======================== */
+  /* HERO                     */
+  /* ======================== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .hero-label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: var(--black);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--crimson);
+  }
+
+  .hero-sub {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: var(--mid-gray);
+    max-width: 600px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--crimson);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-cta:hover {
+    background: var(--crimson-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196, 35, 63, 0.25);
+  }
+
+  .hero-cta svg {
+    transition: transform 0.3s ease;
+  }
+
+  .hero-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 3rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.2s forwards;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--mid-gray);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--crimson);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  /* ======================== */
+  /* SECTION SHARED           */
+  /* ======================== */
+  section {
+    padding: 7rem 3rem;
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: var(--mid-gray);
+    max-width: 640px;
+    margin-bottom: 4rem;
+  }
+
+  /* ======================== */
+  /* SERVICES                 */
+  /* ======================== */
+  .services {
+    background: white;
+    border-top: 1px solid var(--warm-gray);
+    border-bottom: 1px solid var(--warm-gray);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--warm-gray);
+    margin-top: 2rem;
+  }
+
+  .service-card {
+    background: white;
+    padding: 2.75rem 2.25rem;
+    position: relative;
+    transition: all 0.4s ease;
+    cursor: default;
+  }
+
+  .service-card:hover {
+    background: var(--off-white);
+  }
+
+  .service-number {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--warm-gray);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    transition: color 0.4s ease;
+  }
+
+  .service-card:hover .service-number {
+    color: var(--crimson);
+  }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: var(--black);
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--mid-gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-includes {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--dark-gray);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--warm-gray);
+  }
+
+  /* ======================== */
+  /* HOW WE WORK              */
+  /* ======================== */
+  .process {
+    background: var(--off-white);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .process-step {
+    position: relative;
+  }
+
+  .step-line {
+    width: 100%;
+    height: 3px;
+    background: var(--warm-gray);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .step-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--crimson);
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+
+  .process-step:nth-child(1) .step-line::after { width: 33%; }
+  .process-step:nth-child(2) .step-line::after { width: 66%; }
+  .process-step:nth-child(3) .step-line::after { width: 100%; }
+
+  .step-number {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 0.75rem;
+  }
+
+  .process-step h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: var(--black);
+  }
+
+  .process-step p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--mid-gray);
+  }
+
+  /* ======================== */
+  /* CASE STUDY               */
+  /* ======================== */
+  .case-study {
+    background: var(--black);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 3rem 6rem;
+  }
+
+  .case-study .section-label {
+    color: var(--case-label);
+  }
+
+  .case-study .section-title {
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    margin-bottom: 3.5rem;
+  }
+
+  /* Hero image area */
+  .case-study-hero {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--dark-gray);
+    border-radius: 10px;
+    margin-bottom: 4rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .case-study-hero-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: rgba(255,255,255,0.15);
+  }
+
+  .case-study-hero-placeholder svg {
+    opacity: 0.3;
+  }
+
+  .case-study-hero-placeholder span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* Overview stats row */
+  .case-study-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+  }
+
+  .overview-stat {
+    background: rgba(255,255,255,0.03);
+    padding: 1.75rem 1.5rem;
+    transition: background 0.3s ease;
+  }
+
+  .overview-stat:hover {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .overview-stat-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--case-label);
+    margin-bottom: 0.5rem;
+  }
+
+  .overview-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: white;
+    line-height: 1.35;
+  }
+
+  /* Challenge / Solution grid */
+  .case-study-narrative {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .narrative-block {}
+
+  .narrative-block h4 {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--case-label);
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .narrative-block p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Deliverables */
+  .case-study-deliverables-section {
+    margin-bottom: 4rem;
+  }
+
+  .case-study-deliverables-section h4 {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--case-label);
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .deliverable-item {
+    background: rgba(255,255,255,0.03);
+    padding: 1.25rem 1.5rem;
+    transition: background 0.3s ease;
+  }
+
+  .deliverable-item:hover {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .deliverable-item-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 0.35rem;
+  }
+
+  .deliverable-item-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* Outcome block */
+  .case-study-result {
+    padding: 2.5rem;
+    background: rgba(181, 176, 171, 0.06);
+    border-left: 3px solid var(--case-label);
+    border-radius: 0 10px 10px 0;
+  }
+
+  .case-study-result h4 {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--case-label);
+    margin-bottom: 1rem;
+  }
+
+  .case-study-result p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .case-study-result .result-metrics {
+    display: flex;
+    gap: 3rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .result-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .result-metric-value {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: white;
+  }
+
+  .result-metric-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.03em;
+  }
+
+  /* Gallery row */
+  .case-study-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/3;
+    background: var(--dark-gray);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.15);
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: border-color 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  /* ======================== */
+  /* CTA                      */
+  /* ======================== */
+  .cta-section {
+    background: var(--off-white);
+    text-align: center;
+    padding: 8rem 3rem;
+    position: relative;
+  }
+
+  .cta-section .section-title {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .cta-section .section-intro {
+    max-width: 480px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--crimson);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 1.1rem 2.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: var(--crimson-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196, 35, 63, 0.25);
+  }
+
+  .cta-button svg {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover svg {
+    transform: translateX(4px);
+  }
+
+  .cta-fallback {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--mid-gray);
+  }
+
+  .cta-fallback a {
+    color: var(--dark-gray);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .cta-fallback a:hover {
+    color: var(--crimson);
+  }
+
+  /* ======================== */
+  /* FOOTER                   */
+  /* ======================== */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.6);
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    color: var(--crimson);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .footer-logo:hover {
+    color: var(--crimson-dark);
+  }
+
+  .footer-logo svg {
+    display: block;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: white;
+  }
+
+  .footer-legal {
+    font-size: 0.8rem;
+  }
+
+  /* ======================== */
+  /* ANIMATIONS               */
+  /* ======================== */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scrollPulse {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered reveals for children */
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-stagger.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+  .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+  .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
+  .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
+  .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
+  .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
+
+  /* ======================== */
+  /* RESPONSIVE               */
+  /* ======================== */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    section { padding: 5rem 1.5rem; }
+    .case-study { padding: 5rem 1.5rem 4rem; }
+
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+    .case-study-overview { grid-template-columns: repeat(2, 1fr); }
+    .case-study-narrative { grid-template-columns: 1fr; gap: 2.5rem; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .case-study-gallery { grid-template-columns: 1fr; }
+
+    .case-study-result .result-metrics {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    footer {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.25rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero-scroll { display: none; }
+    .cta-section { padding: 5rem 1.5rem; }
+    .case-study-overview { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" aria-label="Poco Studio home">
+    <svg width="106" height="31" viewBox="0 0 212 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M203.698 44.7038C201.41 44.7038 199.504 43.9118 197.978 42.3278C196.453 40.7438 195.69 38.8372 195.69 36.6078C195.69 34.2612 196.453 32.3252 197.978 30.7998C199.504 29.2158 201.41 28.4238 203.698 28.4238C206.045 28.4238 207.952 29.2158 209.418 30.7998C210.944 32.3252 211.706 34.2612 211.706 36.6078C211.706 38.8372 210.944 40.7438 209.418 42.3278C207.952 43.9118 206.045 44.7038 203.698 44.7038Z" fill="currentColor"/>
+      <path d="M166.256 44.704C161.856 44.704 157.866 43.736 154.288 41.8C150.768 39.8053 147.981 37.1067 145.928 33.704C143.874 30.3013 142.848 26.488 142.848 22.264C142.848 18.04 143.874 14.256 145.928 10.912C147.981 7.568 150.768 4.928 154.288 2.992C157.808 0.997331 161.797 0 166.256 0C170.714 0 174.704 0.968 178.224 2.904C181.744 4.84 184.53 7.50933 186.584 10.912C188.637 14.256 189.664 18.04 189.664 22.264C189.664 26.488 188.637 30.3013 186.584 33.704C184.53 37.1067 181.744 39.8053 178.224 41.8C174.704 43.736 170.714 44.704 166.256 44.704ZM166.256 32.472C168.192 32.472 169.893 32.0613 171.36 31.24C172.826 30.36 173.941 29.1573 174.704 27.632C175.525 26.048 175.936 24.2587 175.936 22.264C175.936 20.2693 175.525 18.5387 174.704 17.072C173.882 15.5467 172.738 14.3733 171.272 13.552C169.864 12.672 168.192 12.232 166.256 12.232C164.378 12.232 162.706 12.672 161.24 13.552C159.773 14.3733 158.629 15.5467 157.808 17.072C156.986 18.5973 156.576 20.3573 156.576 22.352C156.576 24.288 156.986 26.048 157.808 27.632C158.629 29.1573 159.773 30.36 161.24 31.24C162.706 32.0613 164.378 32.472 166.256 32.472Z" fill="currentColor"/>
+      <path d="M123.719 44.704C119.319 44.704 115.329 43.736 111.751 41.8C108.172 39.864 105.356 37.1947 103.303 33.792C101.249 30.3893 100.223 26.576 100.223 22.352C100.223 18.0693 101.249 14.256 103.303 10.912C105.415 7.50933 108.26 4.84 111.839 2.904C115.417 0.968 119.436 0 123.895 0C127.239 0 130.289 0.586666 133.047 1.76C135.863 2.87466 138.356 4.576 140.527 6.864L131.903 15.488C130.905 14.3733 129.732 13.552 128.383 13.024C127.092 12.496 125.596 12.232 123.895 12.232C121.959 12.232 120.228 12.672 118.703 13.552C117.236 14.3733 116.063 15.5467 115.183 17.072C114.361 18.5387 113.951 20.2693 113.951 22.264C113.951 24.2587 114.361 26.0187 115.183 27.544C116.063 29.0693 117.265 30.272 118.791 31.152C120.316 32.032 122.017 32.472 123.895 32.472C125.655 32.472 127.209 32.1787 128.559 31.592C129.967 30.9467 131.169 30.0667 132.167 28.952L140.703 37.576C138.473 39.9227 135.951 41.712 133.135 42.944C130.319 44.1173 127.18 44.704 123.719 44.704Z" fill="currentColor"/>
+      <path d="M72.9275 44.704C68.5275 44.704 64.5382 43.736 60.9595 41.8C57.4395 39.8053 54.6529 37.1067 52.5995 33.704C50.5462 30.3013 49.5195 26.488 49.5195 22.264C49.5195 18.04 50.5462 14.256 52.5995 10.912C54.6529 7.568 57.4395 4.928 60.9595 2.992C64.4795 0.997331 68.4689 0 72.9275 0C77.3862 0 81.3755 0.968 84.8955 2.904C88.4155 4.84 91.2022 7.50933 93.2555 10.912C95.3089 14.256 96.3355 18.04 96.3355 22.264C96.3355 26.488 95.3089 30.3013 93.2555 33.704C91.2022 37.1067 88.4155 39.8053 84.8955 41.8C81.3755 43.736 77.3862 44.704 72.9275 44.704ZM72.9275 32.472C74.8635 32.472 76.5649 32.0613 78.0315 31.24C79.4982 30.36 80.6129 29.1573 81.3755 27.632C82.1969 26.048 82.6075 24.2587 82.6075 22.264C82.6075 20.2693 82.1969 18.5387 81.3755 17.072C80.5542 15.5467 79.4102 14.3733 77.9435 13.552C76.5355 12.672 74.8635 12.232 72.9275 12.232C71.0502 12.232 69.3782 12.672 67.9115 13.552C66.4449 14.3733 65.3009 15.5467 64.4795 17.072C63.6582 18.5973 63.2475 20.3573 63.2475 22.352C63.2475 24.288 63.6582 26.048 64.4795 27.632C65.3009 29.1573 66.4449 30.36 67.9115 31.24C69.3782 32.0613 71.0502 32.472 72.9275 32.472Z" fill="currentColor"/>
+      <path d="M24.64 44.6159C21.7653 44.6159 19.1253 44.0586 16.72 42.9439C14.3147 41.8292 12.3493 40.3039 10.824 38.3679C9.29867 36.3732 8.41867 34.1146 8.184 31.5919V13.5519C8.41867 11.0292 9.29867 8.74122 10.824 6.68789C12.3493 4.63456 14.3147 3.02122 16.72 1.84789C19.1253 0.674559 21.7653 0.0878906 24.64 0.0878906C28.688 0.0878906 32.2667 1.05589 35.376 2.99189C38.544 4.92789 41.008 7.56789 42.768 10.9119C44.5867 14.2559 45.496 18.0692 45.496 22.3519C45.496 26.6346 44.5867 30.4479 42.768 33.7919C41.008 37.1359 38.544 39.7759 35.376 41.7119C32.2667 43.6479 28.688 44.6159 24.64 44.6159ZM0 61.7759V0.967892H13.464V11.9679L11.264 22.3519L13.288 32.7359V61.7759H0ZM22.176 32.4719C24.112 32.4719 25.784 32.0319 27.192 31.1519C28.6587 30.2719 29.8027 29.0692 30.624 27.5439C31.4453 26.0186 31.856 24.2879 31.856 22.3519C31.856 20.3572 31.4453 18.5972 30.624 17.0719C29.8027 15.5466 28.6587 14.3732 27.192 13.5519C25.784 12.6719 24.1413 12.2319 22.264 12.2319C20.3867 12.2319 18.7147 12.6719 17.248 13.5519C15.84 14.3732 14.7253 15.5466 13.904 17.0719C13.0827 18.5972 12.672 20.3572 12.672 22.3519C12.672 24.2879 13.0533 26.0186 13.816 27.5439C14.6373 29.0692 15.7813 30.2719 17.248 31.1519C18.7147 32.0319 20.3573 32.4719 22.176 32.4719Z" fill="currentColor"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact" class="nav-cta">Book a call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Design Consultancy</div>
+    <h1>We help you build what you haven't had the <em>resources</em> to get to yet.</h1>
+    <p class="hero-sub">Poco is a design studio that helps businesses design and launch the websites, products, and digital experiences they've been putting off — because they didn't have the time, the team, or the expertise to get it done.</p>
+    <a href="#contact" class="hero-cta">
+      Book a free consultation
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="reveal">
+    <div class="section-label">What we do</div>
+    <div class="section-title">Design that solves<br>business problems.</div>
+    <p class="section-intro">We partner with businesses to solve real problems through design — whether that's a website that drives growth, a product that needs better UX, or a strategy that's been sitting on the backlog.</p>
+  </div>
+
+  <div class="services-grid reveal-stagger">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <h3>Websites that work for your business</h3>
+      <p>Custom-designed websites built around how your clients actually find you and decide to work with you. Not templates — strategic, built-from-scratch digital experiences.</p>
+      <div class="service-includes">Website strategy · Custom design · Webflow development · SEO foundations · Launch support</div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <h3>Design expertise without the full-time hire</h3>
+      <p>UX/UI design, user research, and prototyping for teams that need product design help but aren't ready to hire in-house. We embed with your team to move the work forward.</p>
+      <div class="service-includes">UX/UI design · User research · Prototyping · Usability testing · Design systems</div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <h3>Figure out what to build next</h3>
+      <p>For teams that have ideas but need help scoping, prioritizing, and turning business goals into a clear design direction. Think of it as a product-minded design partner.</p>
+      <div class="service-includes">Product scoping · Feature prioritization · Design roadmaps · Stakeholder alignment</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="process">
+  <div class="reveal">
+    <div class="section-label">How we work</div>
+    <div class="section-title">A process built around<br>your outcomes.</div>
+  </div>
+
+  <div class="process-steps reveal-stagger">
+    <div class="process-step">
+      <div class="step-line"></div>
+      <div class="step-number">Step 01</div>
+      <h3>Understand the real problem</h3>
+      <p>We start every engagement by learning your business, your users, and what's actually in the way. No generic audits — we come back with a clear recommendation and a plan.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-line"></div>
+      <div class="step-number">Step 02</div>
+      <h3>Design and build</h3>
+      <p>You get a dedicated design partner who handles strategy, design, and development. Regular check-ins, no black boxes. We manage the details so you can focus on running your business.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-line"></div>
+      <div class="step-number">Step 03</div>
+      <h3>Measure what matters</h3>
+      <p>Launch isn't the finish line. We follow up to make sure what we built is actually delivering results — more leads, better usability, whatever success looks like for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case-study" id="work">
+  <!-- Header -->
+  <div class="reveal">
+    <div class="section-label">Featured Work</div>
+    <div class="section-title">FMW|FabLab</div>
+    <div class="case-study-subtitle">Commercial Fabrication Studio · 20+ Years in Business</div>
+  </div>
+
+  <!-- Hero Screenshot -->
+  <div class="case-study-hero reveal">
+    <div class="case-study-hero-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>Desktop screenshot of live FMW site</span>
+    </div>
+  </div>
+
+  <!-- Quick Overview Stats -->
+  <div class="case-study-overview reveal-stagger">
+    <div class="overview-stat">
+      <div class="overview-stat-label">Client</div>
+      <div class="overview-stat-value">FMW|FabLab</div>
+    </div>
+    <div class="overview-stat">
+      <div class="overview-stat-label">Industry</div>
+      <div class="overview-stat-value">Commercial Fabrication</div>
+    </div>
+    <div class="overview-stat">
+      <div class="overview-stat-label">Services</div>
+      <div class="overview-stat-value">Strategy, Design, Development</div>
+    </div>
+    <div class="overview-stat">
+      <div class="overview-stat-label">Platform</div>
+      <div class="overview-stat-value">Webflow</div>
+    </div>
+  </div>
+
+  <!-- Challenge / Approach -->
+  <div class="case-study-narrative reveal">
+    <div class="narrative-block">
+      <h4>The Challenge</h4>
+      <p>FMW had two decades of expert fabrication work but no digital presence that reflected it. Contractors and designers evaluating vendors had no easy way to assess their capabilities, and FMW had no tool to support the word-of-mouth referrals that drive their business.</p>
+    </div>
+    <div class="narrative-block">
+      <h4>Our Approach</h4>
+      <p>We repositioned FMW's digital presence to target commercial clients by making their specialty fabrication capabilities immediately clear to contractors and designers. The strategy centered on building a shareable tool that shortens the path from referral to signed contract.</p>
+    </div>
+  </div>
+
+  <!-- Deliverables -->
+  <div class="case-study-deliverables-section reveal">
+    <h4>What We Delivered</h4>
+    <div class="deliverables-grid reveal-stagger">
+      <div class="deliverable-item">
+        <div class="deliverable-item-title">Website Strategy</div>
+        <div class="deliverable-item-desc">Audience research, content strategy, and site architecture</div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-item-title">Custom Design</div>
+        <div class="deliverable-item-desc">Bespoke visual design built to showcase fabrication work</div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-item-title">Webflow Development</div>
+        <div class="deliverable-item-desc">Fully responsive build with CMS for ongoing updates</div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-item-title">SEO Foundations</div>
+        <div class="deliverable-item-desc">Technical SEO, metadata, and search visibility strategy</div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-item-title">Newsletter Migration</div>
+        <div class="deliverable-item-desc">Mailchimp migration with subscriber list and templates</div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-item-title">Marketing Automation</div>
+        <div class="deliverable-item-desc">Zapier integrations connecting forms, CMS, and email</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outcome -->
+  <div class="case-study-result reveal">
+    <h4>The Outcome</h4>
+    <p>FMW now has a professional digital presence that makes their 20+ years of expertise immediately visible to potential commercial clients. Contractors and designers can evaluate their capabilities at a glance, and the site serves as a shareable tool that shortens the distance between referral and signed contract.</p>
+    <!-- Uncomment and update when you have real metrics:
+    <div class="result-metrics">
+      <div class="result-metric">
+        <div class="result-metric-value">+45%</div>
+        <div class="result-metric-label">Increase in quote requests</div>
+      </div>
+      <div class="result-metric">
+        <div class="result-metric-value">3x</div>
+        <div class="result-metric-label">More inbound from search</div>
+      </div>
+      <div class="result-metric">
+        <div class="result-metric-value">6 weeks</div>
+        <div class="result-metric-label">From kickoff to launch</div>
+      </div>
+    </div>
+    -->
+  </div>
+
+  <!-- Gallery -->
+  <div class="case-study-gallery reveal-stagger">
+    <div class="gallery-item">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Desktop view
+    </div>
+    <div class="gallery-item">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      Mobile view
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="reveal">
+    <div class="section-label">Get in touch</div>
+    <div class="section-title">Have a project that's been<br>on the back burner?</div>
+    <p class="section-intro">Let's talk about what you're trying to build and whether we're the right fit. No pitch, no commitment — just a conversation.</p>
+    <a href="#contact" class="cta-button">
+      Book a free consultation
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <p class="cta-fallback">Or reach out directly at <a href="/cdn-cgi/l/email-protection#bed6dbd2d2d1feced1ddd1cdcacbdad7d190ddd1d3"><span class="__cf_email__" data-cfemail="5d35383131321d2d323e322e2928393432733e3230">[email&#160;protected]</span></a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo" aria-label="Poco Studio home">
+    <svg width="86" height="25" viewBox="0 0 212 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M203.698 44.7038C201.41 44.7038 199.504 43.9118 197.978 42.3278C196.453 40.7438 195.69 38.8372 195.69 36.6078C195.69 34.2612 196.453 32.3252 197.978 30.7998C199.504 29.2158 201.41 28.4238 203.698 28.4238C206.045 28.4238 207.952 29.2158 209.418 30.7998C210.944 32.3252 211.706 34.2612 211.706 36.6078C211.706 38.8372 210.944 40.7438 209.418 42.3278C207.952 43.9118 206.045 44.7038 203.698 44.7038Z" fill="currentColor"/>
+      <path d="M166.256 44.704C161.856 44.704 157.866 43.736 154.288 41.8C150.768 39.8053 147.981 37.1067 145.928 33.704C143.874 30.3013 142.848 26.488 142.848 22.264C142.848 18.04 143.874 14.256 145.928 10.912C147.981 7.568 150.768 4.928 154.288 2.992C157.808 0.997331 161.797 0 166.256 0C170.714 0 174.704 0.968 178.224 2.904C181.744 4.84 184.53 7.50933 186.584 10.912C188.637 14.256 189.664 18.04 189.664 22.264C189.664 26.488 188.637 30.3013 186.584 33.704C184.53 37.1067 181.744 39.8053 178.224 41.8C174.704 43.736 170.714 44.704 166.256 44.704ZM166.256 32.472C168.192 32.472 169.893 32.0613 171.36 31.24C172.826 30.36 173.941 29.1573 174.704 27.632C175.525 26.048 175.936 24.2587 175.936 22.264C175.936 20.2693 175.525 18.5387 174.704 17.072C173.882 15.5467 172.738 14.3733 171.272 13.552C169.864 12.672 168.192 12.232 166.256 12.232C164.378 12.232 162.706 12.672 161.24 13.552C159.773 14.3733 158.629 15.5467 157.808 17.072C156.986 18.5973 156.576 20.3573 156.576 22.352C156.576 24.288 156.986 26.048 157.808 27.632C158.629 29.1573 159.773 30.36 161.24 31.24C162.706 32.0613 164.378 32.472 166.256 32.472Z" fill="currentColor"/>
+      <path d="M123.719 44.704C119.319 44.704 115.329 43.736 111.751 41.8C108.172 39.864 105.356 37.1947 103.303 33.792C101.249 30.3893 100.223 26.576 100.223 22.352C100.223 18.0693 101.249 14.256 103.303 10.912C105.415 7.50933 108.26 4.84 111.839 2.904C115.417 0.968 119.436 0 123.895 0C127.239 0 130.289 0.586666 133.047 1.76C135.863 2.87466 138.356 4.576 140.527 6.864L131.903 15.488C130.905 14.3733 129.732 13.552 128.383 13.024C127.092 12.496 125.596 12.232 123.895 12.232C121.959 12.232 120.228 12.672 118.703 13.552C117.236 14.3733 116.063 15.5467 115.183 17.072C114.361 18.5387 113.951 20.2693 113.951 22.264C113.951 24.2587 114.361 26.0187 115.183 27.544C116.063 29.0693 117.265 30.272 118.791 31.152C120.316 32.032 122.017 32.472 123.895 32.472C125.655 32.472 127.209 32.1787 128.559 31.592C129.967 30.9467 131.169 30.0667 132.167 28.952L140.703 37.576C138.473 39.9227 135.951 41.712 133.135 42.944C130.319 44.1173 127.18 44.704 123.719 44.704Z" fill="currentColor"/>
+      <path d="M72.9275 44.704C68.5275 44.704 64.5382 43.736 60.9595 41.8C57.4395 39.8053 54.6529 37.1067 52.5995 33.704C50.5462 30.3013 49.5195 26.488 49.5195 22.264C49.5195 18.04 50.5462 14.256 52.5995 10.912C54.6529 7.568 57.4395 4.928 60.9595 2.992C64.4795 0.997331 68.4689 0 72.9275 0C77.3862 0 81.3755 0.968 84.8955 2.904C88.4155 4.84 91.2022 7.50933 93.2555 10.912C95.3089 14.256 96.3355 18.04 96.3355 22.264C96.3355 26.488 95.3089 30.3013 93.2555 33.704C91.2022 37.1067 88.4155 39.8053 84.8955 41.8C81.3755 43.736 77.3862 44.704 72.9275 44.704ZM72.9275 32.472C74.8635 32.472 76.5649 32.0613 78.0315 31.24C79.4982 30.36 80.6129 29.1573 81.3755 27.632C82.1969 26.048 82.6075 24.2587 82.6075 22.264C82.6075 20.2693 82.1969 18.5387 81.3755 17.072C80.5542 15.5467 79.4102 14.3733 77.9435 13.552C76.5355 12.672 74.8635 12.232 72.9275 12.232C71.0502 12.232 69.3782 12.672 67.9115 13.552C66.4449 14.3733 65.3009 15.5467 64.4795 17.072C63.6582 18.5973 63.2475 20.3573 63.2475 22.352C63.2475 24.288 63.6582 26.048 64.4795 27.632C65.3009 29.1573 66.4449 30.36 67.9115 31.24C69.3782 32.0613 71.0502 32.472 72.9275 32.472Z" fill="currentColor"/>
+      <path d="M24.64 44.6159C21.7653 44.6159 19.1253 44.0586 16.72 42.9439C14.3147 41.8292 12.3493 40.3039 10.824 38.3679C9.29867 36.3732 8.41867 34.1146 8.184 31.5919V13.5519C8.41867 11.0292 9.29867 8.74122 10.824 6.68789C12.3493 4.63456 14.3147 3.02122 16.72 1.84789C19.1253 0.674559 21.7653 0.0878906 24.64 0.0878906C28.688 0.0878906 32.2667 1.05589 35.376 2.99189C38.544 4.92789 41.008 7.56789 42.768 10.9119C44.5867 14.2559 45.496 18.0692 45.496 22.3519C45.496 26.6346 44.5867 30.4479 42.768 33.7919C41.008 37.1359 38.544 39.7759 35.376 41.7119C32.2667 43.6479 28.688 44.6159 24.64 44.6159ZM0 61.7759V0.967892H13.464V11.9679L11.264 22.3519L13.288 32.7359V61.7759H0ZM22.176 32.4719C24.112 32.4719 25.784 32.0319 27.192 31.1519C28.6587 30.2719 29.8027 29.0692 30.624 27.5439C31.4453 26.0186 31.856 24.2879 31.856 22.3519C31.856 20.3572 31.4453 18.5972 30.624 17.0719C29.8027 15.5466 28.6587 14.3732 27.192 13.5519C25.784 12.6719 24.1413 12.2319 22.264 12.2319C20.3867 12.2319 18.7147 12.6719 17.248 13.5519C15.84 14.3732 14.7253 15.5466 13.904 17.0719C13.0827 18.5972 12.672 20.3572 12.672 22.3519C12.672 24.2879 13.0533 26.0186 13.816 27.5439C14.6373 29.0692 15.7813 30.2719 17.248 31.1519C18.7147 32.0319 20.3573 32.4719 22.176 32.4719Z" fill="currentColor"/>
+    </svg>
+  </a>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Book a call</a>
+  </div>
+  <div class="footer-legal">© 2025 Poco Studio PLLC</div>
+</footer>
+
+<!-- SCROLL REVEAL + ANCHOR NAVIGATION -->
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal, .reveal-stagger');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Anchor link smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      const target = document.querySelector(targetId);
+      if (target) {
+        const navHeight = document.querySelector('nav').offsetHeight;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, true);
+  });
+</script>
+
+</body>
+</html>
